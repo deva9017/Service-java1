@@ -9,8 +9,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Owner {
     @Id
     private String id;
+	private String ownerFirstName;
+  	private String ownerLastName;
 
     private List<FunctionHall> functionhall;
+   
     
     
 	public Owner() {
@@ -36,8 +39,24 @@ public class Owner {
 
 	@Override
 	public String toString() {
-		return "Owner [id=" + id + ", functionhall="
-				+ functionhall + "]";
+		return "Owner [id=" + id + ", ownerFirstName=" + ownerFirstName + ", ownerLastName=" + ownerLastName
+				+ ", functionhall=" + functionhall + "]";
+	}
+
+	public String getOwnerFirstName() {
+		return ownerFirstName;
+	}
+
+	public void setOwnerFirstName(String ownerFirstName) {
+		this.ownerFirstName = ownerFirstName;
+	}
+
+	public String getOwnerLastName() {
+		return ownerLastName;
+	}
+
+	public void setOwnerLastName(String ownerLastName) {
+		this.ownerLastName = ownerLastName;
 	}
   
     

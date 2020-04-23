@@ -8,6 +8,9 @@ public class FunctionhallServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FunctionhallServiceApplication.class, args);
+		 {
+
+		}
 	}
 
 }

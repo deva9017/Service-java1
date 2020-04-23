@@ -7,8 +7,7 @@ public class FunctionHall {
   private String id;
 
   	private String name;
-  	private String ownerFirstName;
-  	private String ownerLastName;
+  
 
 	private String street;
 	private String state;
@@ -24,8 +23,7 @@ public FunctionHall(String id, String name, String ownerFirstName, String ownerL
 
 	this.id = id;
 	this.name = name;
-	this.ownerFirstName = ownerFirstName;
-	this.ownerLastName = ownerLastName;
+	
 	this.street = street;
 	this.state = state;
 	this.city = city;
@@ -48,20 +46,7 @@ public void setName(String name) {
 	this.name = name;
 }
 
-public String getOwnerFirstName() {
-	return ownerFirstName;
-}
 
-public void setOwnerFirstName(String ownerFirstName) {
-	this.ownerFirstName = ownerFirstName;
-}
-public String getOwnerLastName() {
-	return ownerLastName;
-}
-
-public void setOwnerLastName(String ownerLastName) {
-	this.ownerLastName = ownerLastName;
-}
 
 public String getStreet() {
 	return street;
@@ -100,8 +85,7 @@ public void setZipcode(int zipcode) {
 
 @Override
 public String toString() {
-	return "FunctionHall [id=" + id + ", name=" + name + ", ownerFirstName=" + ownerFirstName + ", ownerLastName="
-			+ ownerLastName + ", street=" + street + ", state=" + state + ", city=" + city + ", zipcode=" + zipcode
+	return "FunctionHall [id=" + id + ", name=" + name + ",  street=" + street + ", state=" + state + ", city=" + city + ", zipcode=" + zipcode
 			+ "]";
 }
 
