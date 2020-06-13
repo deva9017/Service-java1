@@ -79,7 +79,7 @@ restart)
       }
       stage('permissions to dir systemd init'){
       sh label: '', script: '''sudo chmod 777 /etc/systemd/
-      sudo chmod 777 /etc/system/'''
+      sudo chmod 777 /etc/systemd/system/'''
       }
     stage('Creating jar as a service'){ 
 sh label: '', script: '''cd /etc/systemd/system/
@@ -128,7 +128,7 @@ sudo echo "---
       with_items: openjdk-8-jdk  
     -
       copy:
-        src:  /var/lib/jenkins/workspace/service/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar
+        src:  /var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar
         dest: /home/ubuntu/
     -
       copy:
