@@ -113,18 +113,15 @@ cat >vedikaservice.service <<'EOF'
 	sh label: '', script: '''cd /opt/
 sudo echo "---
 -
-  hosts: 13.235.244.132
-  become: true
+ - name: deploys the application
+  hosts: all
+  connection: ssh
+  remote_user: root
   tasks:
-    -
-      apt:
-        update_cache: true
-      become: true
-      name: "Update APT package manager repositories cache"
-    -
-      copy:
-        src:  /var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar
-        dest: /home/ubuntu/
+    - name: install java
+      action: apt name=openjdk-8-jdk  state=present
+    - name: copies the jar file over
+      copy: src=/var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar dest=/home/ubuntu
     -
       copy:
         src: /usr/local/bin/vedikaservice.sh
