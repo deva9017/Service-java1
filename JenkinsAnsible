@@ -3,9 +3,7 @@ node{
        git credentialsId: 'git-creds', url: 'https://github.com/deva9017/Vedika-Service.git'
    }
    stage('gradle Package'){
-     def gradleHome = tool name: 'Gradle', type: 'gradle'
-     def gradleCMD = "${gradleHome}/bin/gradle"
-     sh "${gradleCMD} clean build"
+     sh "gradle clean build"
      }
      stage('playbook exc'){
   sh label: '', script: '''cd /home/ubuntu
