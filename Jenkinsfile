@@ -36,7 +36,8 @@ node{
    stage('Creating bash script to run jar'){   
      sh label: '', script: '''cd /usr/local/bin
 cat >vedikaservice.sh <<'EOF'
-SERVICE_NAME=vedikaservice
+#!/bin/sh 
+SERVICE_NAME=vedikaservice 
 PATH_TO_JAR=/home/ubuntu/functionhall-service-0.0.1-SNAPSHOT.jar
 PID_PATH_NAME=/tmp/vedikaservice-pid 
 case $1 in 
@@ -75,7 +76,7 @@ restart)
   else           
       echo "$SERVICE_NAME is not running ..."    
      fi     ;;
-  esac'''   
+ esac'''   
       }
       stage('permissions to dir systemd init'){
       sh label: '', script: '''sudo chmod 777 /etc/systemd/
@@ -86,7 +87,7 @@ sh label: '', script: '''cd /etc/systemd/system/
 cat >vedikaservice.service <<'EOF'
 [Unit]
  Description = Java Service
- After network.target = Service_Name.service
+ After network.target = vedikaservice.service
 [Service]
  Type = forking
  Restart=always
@@ -115,27 +116,33 @@ sudo echo "---
 -
   hosts: 13.233.87.87
   tasks:
- 
-  - 
+    -
+      apt:
+        update_cache: true
+      become: true
+      name: "Update APT package manager repositories cache"
+    -
+       shell: sudo apt install openjdk-8-jre-headless
+    -
       copy:
-        src=/var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar 
-        dest=/home/ubuntu
-  -
+        src:  /var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar
+        dest: /home/ubuntu/
+    -
       copy:
         src: /usr/local/bin/vedikaservice.sh
         dest: /usr/local/bin/
-  -
+    -
       copy:
         src: /etc/systemd/system/vedikaservice.service
         dest: /etc/systemd/system/
-  -
+    -
        shell: sudo chmod +x /usr/local/bin/vedikaservice.sh   
-  -
+    -
        shell: sudo systemctl daemon-reload  
-  -
+    -
        shell: sudo systemctl enable vedikaservice 
-  -
-       shell: sudo systemctl start vedikaservice" > service.yaml'''
+    -
+       shell: sudo service vedikaservice start" > service.yaml'''
 }
        sh label: '', script: '''cd /opt
        sudo ansible-playbook service.yaml'''
