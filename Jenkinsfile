@@ -121,28 +121,27 @@ sudo echo "---
         update_cache: true
       become: true
       name: "Update APT package manager repositories cache"
-   
-   -   
+  -   
       shell: sudo apt install openjdk-8-jre-headless
-   - 
+  - 
       copy:
         src=/var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar 
         dest=/home/ubuntu
-   -
+  -
       copy:
         src: /usr/local/bin/vedikaservice.sh
         dest: /usr/local/bin/
-   -
+  -
       copy:
         src: /etc/systemd/system/vedikaservice.service
         dest: /etc/systemd/system/
-   -
+  -
        shell: sudo chmod +x /usr/local/bin/vedikaservice.sh   
-   -
+  -
        shell: sudo systemctl daemon-reload  
-   -
+  -
        shell: sudo systemctl enable vedikaservice 
-   -
+  -
        shell: sudo systemctl start vedikaservice" > service.yaml'''
 }
        sh label: '', script: '''cd /opt
