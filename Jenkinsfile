@@ -121,9 +121,9 @@ sudo echo "---
         src: /opt/java.sh
         dest: /home/ubuntu
    -   
-      shell: sudo chmod +x /opt/java.sh
+      shell: sudo chmod +x /home/ubuntu/java.sh
    -
-      shell: sudo sh /opt/java.sh
+      shell: sudo sh /home/ubuntu/java.sh
    - 
       copy:
         src=/var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar 
