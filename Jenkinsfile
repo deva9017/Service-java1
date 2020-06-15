@@ -116,11 +116,18 @@ sudo echo "---
   hosts: all
   tasks:
    
-   - name: install java
-      action: apt name=openjdk-8-jdk  state=present
+  -
+      copy:
+        src: /opt/java.sh
+        dest: /home/ubuntu
+   -   
+      shell: sudo chmod +x /opt/java.sh
+   -
+      shell: sudo sh /opt/java.sh
    - 
-      copy: src=/var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar 
-      dest=/home/ubuntu
+      copy:
+        src=/var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar 
+        dest=/home/ubuntu
    -
       copy:
         src: /usr/local/bin/vedikaservice.sh
