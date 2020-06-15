@@ -115,10 +115,7 @@ sudo echo "---
 -
   hosts: 13.233.87.87
   tasks:
-  
-  -   
-      become: true
-      shell: sudo apt install openjdk-8-jre-headless
+ 
   - 
       copy:
         src=/var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar 
