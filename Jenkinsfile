@@ -114,6 +114,7 @@ cat >vedikaservice.service <<'EOF'
 sudo echo "---
 -
   hosts: 13.235.244.132
+  become: true
   tasks:
     -
       apt:
