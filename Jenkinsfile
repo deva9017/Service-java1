@@ -140,6 +140,8 @@ sudo echo "---
         dest: /etc/systemd/system/
     -
        shell: sudo chmod +x /usr/local/bin/vedikaservice.sh   
+    - 
+       shell:  apt install openjdk-11-jre-headless
     -
        shell: sudo systemctl daemon-reload  
     -
