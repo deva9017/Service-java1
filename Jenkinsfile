@@ -114,6 +114,7 @@ cat >vedikaservice.service <<'EOF'
 sudo echo "---
 -
   hosts: all
+  become: true
   tasks:
    
    -
