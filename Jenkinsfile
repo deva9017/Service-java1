@@ -114,11 +114,10 @@ cat >vedikaservice.service <<'EOF'
 sudo echo "---
 -
   hosts: 13.233.87.87
-  become: yes
-  become_method: su
   tasks:
   
   -   
+      become: true
       shell: sudo apt install openjdk-8-jre-headless
   - 
       copy:
