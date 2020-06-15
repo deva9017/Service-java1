@@ -117,14 +117,8 @@ sudo echo "---
   become: true
   tasks:
    
-   -
-      copy:
-        src: /opt/java.sh
-        dest: /home/ubuntu
    -   
-      shell: sudo chmod +x /home/ubuntu/java.sh
-   -
-      shell: sudo sh /home/ubuntu/java.sh
+      shell: sudo apt install openjdk-8-jre-headless
    - 
       copy:
         src=/var/lib/jenkins/workspace/Servicefinal/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar 
