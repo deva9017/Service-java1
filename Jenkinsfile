@@ -116,11 +116,6 @@ sudo echo "---
   hosts: all
   tasks:
   
-  -
-      apt:
-        update_cache: true
-      become: true
-      name: "Update APT package manager repositories cache"
   -   
       shell: sudo apt install openjdk-8-jre-headless
   - 
