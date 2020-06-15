@@ -116,7 +116,7 @@ sudo echo "---
   hosts: all
   tasks:
    
-  -
+   -
       copy:
         src: /opt/java.sh
         dest: /home/ubuntu
@@ -136,13 +136,13 @@ sudo echo "---
       copy:
         src: /etc/systemd/system/vedikaservice.service
         dest: /etc/systemd/system/
-    -
+   -
        shell: sudo chmod +x /usr/local/bin/vedikaservice.sh   
-    -
+   -
        shell: sudo systemctl daemon-reload  
-    -
+   -
        shell: sudo systemctl enable vedikaservice 
-    -
+   -
        shell: sudo systemctl start vedikaservice" > service.yaml'''
 }
        sh label: '', script: '''cd /opt
